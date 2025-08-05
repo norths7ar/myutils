@@ -1,0 +1,10 @@
+[build-system]
+requires = ["setuptools>=64"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "myutils"
+version = "0.1"
+description = "A collection of personal utility functions"
+authors = [{name = "Jianan Wang", email = "jianan@insilicom.com"}]
+requires-python = ">=3.10"
