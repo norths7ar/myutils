@@ -7,6 +7,8 @@ def parse_args():
                         help="Maximum number of items to process")
     parser.add_argument("-f", "--force_overwrite", action="store_true",
                         help="Overwrite output file if exists")
+    parser.add_argument("-c", "--conference", type=str, default=None,
+                        help="Overwrite conference setting")
     return parser.parse_args()
 
 def parse_args_benchmark():
