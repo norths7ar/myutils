@@ -18,6 +18,8 @@ def parse_args_benchmark():
                         help="Sample size for the benckmark")
     parser.add_argument("-f", "--force_overwrite", action="store_true",
                         help="Overwrite output file if exists")
-    parser.add_argument("--task", type=str, default="q2",
+    parser.add_argument("-c", "--conference", type=str, default=None,
+                        help="Overwrite conference setting")
+    parser.add_argument("-t", "--task", type=str, default="q2",
                         help="Name of the test task to run (e.g., q1, q2...)")
     return parser.parse_args()
