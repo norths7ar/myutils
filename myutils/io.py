@@ -1,4 +1,5 @@
 import json
+import warnings
 from collections.abc import Iterable
 from pathlib import Path
 from typing import Generator
@@ -35,6 +36,7 @@ def add_to_jsonl(items: Iterable, path: Path):
         for item in items:
             f.write(json.dumps(item, ensure_ascii=False) + "\n")
 
+
 def save_jsonl(items: Iterable, path: Path):
     """Save items to a jsonl file."""
     with path.open("w", encoding="utf-8") as f:
@@ -43,9 +45,36 @@ def save_jsonl(items: Iterable, path: Path):
 
 
 def load_md(file_path: Path) -> str:
-    """Load data from a Markdown (MD) file."""
+    """Deprecated. Use `load_text()` instead."""
+    warnings.warn(
+        "load_md() is deprecated and will be removed in a future version. "
+        "Use load_text() instead.",
+        DeprecationWarning,
+        stacklevel=2,
+    )
     with file_path.open('r', encoding='utf-8') as f:
         return f.read()
+
+
+def load_text(file_path: Path):
+    """Load text or Markdown file content.
+    
+    Args:
+        file_path: Path to the file (.txt or .md)
+        lines: If True, return a list of lines; else return a full string.
+    """
+    with file_path.open("r", encoding="utf-8") as f:
+        return f.read()
+
+
+def load_text_lines(file_path: Path):
+    """Load text or Markdown file content as a list of lines.
+    
+    Args:
+        file_path: Path to the file (.txt or .md)
+    """
+    with file_path.open("r", encoding="utf-8") as f:
+        return f.readlines()
 
 
 def set_output_dir(path: Path):
